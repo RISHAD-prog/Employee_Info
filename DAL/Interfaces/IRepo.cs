@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IRepo<CLASS, ID, RETURNTYPE>
+    public interface IRepo<CLASS, ID, RETURNTYPE, empId>
     {
-        List<CLASS> Get();
-        CLASS Get(ID id);
+        bool Get(empId id);
+        RETURNTYPE Get(ID id);
         RETURNTYPE Add(CLASS obj);
         bool Delete(/*CLASS obj*/ ID id);
         RETURNTYPE Update(CLASS obj);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class EmployeeRepo : IRepo<Employee, int, Employee>
+    internal class EmployeeRepo : IRepo<Employee, int, Employee,string>
     {
         private readonly EmployeeEntities db;
 
@@ -33,19 +33,31 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
-        public  List<Employee> Get()
+        public bool Get(string EmpCode)
         {
-            throw new NotImplementedException();
+            var d = db.Employees.SingleOrDefault(x => x.EmployeeCode.Equals(EmpCode));
+            if(d == null)
+            {
+                return false;
+            }
+            return true;
         }
 
-        public  Employee Get(int id)
+        public Employee Get(int id)
         {
-            throw new NotImplementedException();
+            return db.Employees.SingleOrDefault(x => x.Id.Equals(id));
         }
 
         public  Employee Update(Employee obj)
         {
-            throw new NotImplementedException();
+            var data = Get(obj.Id);
+            db.Entry(data).CurrentValues.SetValues(obj);
+            var d = db.SaveChanges();
+            if(d > 0)
+            {
+                return data;
+            }
+            return null;
         }
     }
 }

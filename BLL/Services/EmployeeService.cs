@@ -32,5 +32,23 @@ namespace BLL.Services
             }
             return null;
         }
+        public EmployeeDTO UpdateData(EmployeeDTO employee)
+        {
+            var dataAccessFactory = new DataAccessFactory(db);
+            var isAvailable = dataAccessFactory.EmployeeCrud().Get(employee.EmployeeCode);
+            if (isAvailable)
+            {
+                return null;
+            }
+            else
+            {
+                var config = Service.Mapping<EmployeeDTO, Employee>();
+                var mapper = new Mapper(config);
+                var data = mapper.Map<Employee>(employee);
+                var result = dataAccessFactory.EmployeeCrud().Update(data);
+                var UpdatedInfo=mapper.Map<EmployeeDTO>(result);
+                return UpdatedInfo;
+            }
+        }
     }
 }

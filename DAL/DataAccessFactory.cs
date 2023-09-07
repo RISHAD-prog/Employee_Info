@@ -12,7 +12,7 @@ public class DataAccessFactory
     {
         db = _db;
     }
-    public IRepo<Employee, int, Employee> EmployeeCrud()
+    public IRepo<Employee, int, Employee, string> EmployeeCrud()
     {
         return new EmployeeRepo(db);
     }

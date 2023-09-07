@@ -23,15 +23,29 @@ namespace Employee_Info.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var employeeService= new EmployeeService(db);
+                    var employeeService = new EmployeeService(db);
                     var data = employeeService.AddEmployee(employee);
                     return Ok(data);
                 }
                 return NoContent();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e);
+            }
+        }
+        [HttpPut]
+        public IActionResult UpdateEmployee(EmployeeDTO employee)
+        {
+            try
+            {
+                var employeeService = new EmployeeService(db);
+                var result = employeeService.UpdateData(employee);
+                return Ok(result);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
     }
