@@ -1,0 +1,15 @@
+E:\iBos Project\BLL\bin\Debug\net6.0\BLL.deps.json
+E:\iBos Project\BLL\bin\Debug\net6.0\BLL.dll
+E:\iBos Project\BLL\bin\Debug\net6.0\BLL.pdb
+E:\iBos Project\BLL\bin\Debug\net6.0\DAL.dll
+E:\iBos Project\BLL\bin\Debug\net6.0\DAL.pdb
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.csproj.AssemblyReference.cache
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.AssemblyInfoInputs.cache
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.AssemblyInfo.cs
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.csproj.CoreCompileInputs.cache
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.csproj.CopyComplete
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.dll
+E:\iBos Project\BLL\obj\Debug\net6.0\refint\BLL.dll
+E:\iBos Project\BLL\obj\Debug\net6.0\BLL.pdb
+E:\iBos Project\BLL\obj\Debug\net6.0\ref\BLL.dll
