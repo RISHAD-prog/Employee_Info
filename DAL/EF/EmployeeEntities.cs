@@ -14,5 +14,6 @@ namespace DAL.EF
         {
         }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeAttendance> employeeAttendances { get; set; }
     }
 }

@@ -20,8 +20,7 @@ namespace DAL.Repo
         public  Employee Add(Employee obj)
         {
             db.Employees.Add(obj);
-            var d= db.SaveChanges();
-            if (d > 0)
+            if (db.SaveChanges() > 0)
             {
                 return obj;
             }
@@ -56,12 +55,12 @@ namespace DAL.Repo
 
         public Employee Get(int id)
         {
-            return db.Employees.SingleOrDefault(x => x.Id.Equals(id));
+            return db.Employees.SingleOrDefault(x => x.EmployeeId.Equals(id));
         }
 
         public  Employee Update(Employee obj)
         {
-            var data = Get(obj.Id);
+            var data = Get(obj.EmployeeId);
             db.Entry(data).CurrentValues.SetValues(obj);
             var d = db.SaveChanges();
             if(d > 0)

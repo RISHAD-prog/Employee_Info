@@ -20,4 +20,8 @@ public class DataAccessFactory
     {
         return new EmployeeRepo(db);
     }
+    public IRepo<EmployeeAttendance, int, EmployeeAttendance, string> EmployeeAttendanceCrud()
+    {
+        return new EmployeeAttendanceRepo(db);
+    }
 }

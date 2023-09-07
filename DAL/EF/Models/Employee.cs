@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +11,18 @@ namespace DAL.EF.Models
 {
     public class Employee
     {
-        public int Id { get; set; }
-        public int? EmployeeId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int EmployeeId { get; set; }
         public string? EmployeeName { get; set; }
         public string? EmployeeCode { get; set; }
         public int? EmployeeSalary { get; set; }
         public int? SupervisorId { get; set; }
+
+        public virtual List<EmployeeAttendance> EmployeeAttendances { get; set; }
+        public Employee()
+        {
+            EmployeeAttendances = new List<EmployeeAttendance>();
+        }
     }
 }
