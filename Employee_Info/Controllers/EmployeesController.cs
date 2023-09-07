@@ -48,5 +48,19 @@ namespace Employee_Info.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                var employeeService = new EmployeeService(db);
+                var result = employeeService.GetData();
+                return Ok(result);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e?.Message);
+            }
+        }
     }
 }

@@ -50,5 +50,18 @@ namespace BLL.Services
                 return UpdatedInfo;
             }
         }
+        public int? GetData()
+        {
+            var dataAccessFactory = new DataAccessFactory(db);
+            var config = Service.OneTimeMapping<Employee, EmployeeDTO>();
+            var mapper = new Mapper(config);
+            var result = dataAccessFactory.EmpInfo().EmpSalary();
+            if(result != null)
+            {
+                var f= mapper.Map<EmployeeDTO>(result);
+                return f.EmployeeSalary;
+            }
+            return null;
+        }
     }
 }

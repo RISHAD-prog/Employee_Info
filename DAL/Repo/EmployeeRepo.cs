@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class EmployeeRepo : IRepo<Employee, int, Employee,string>
+    internal class EmployeeRepo : IRepo<Employee, int, Employee,string>, IEmpInfo<Employee>
     {
         private readonly EmployeeEntities db;
 
@@ -31,6 +31,17 @@ namespace DAL.Repo
         public bool Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public Employee EmpSalary()
+        {
+            var thirdHighest= db.Employees.OrderByDescending(x=> x.EmployeeSalary).
+                Skip(2).Take(1).FirstOrDefault();
+            if(thirdHighest != null)
+            {
+                return thirdHighest;
+            }
+            return null;
         }
 
         public bool Get(string EmpCode)

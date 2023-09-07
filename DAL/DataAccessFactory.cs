@@ -16,4 +16,8 @@ public class DataAccessFactory
     {
         return new EmployeeRepo(db);
     }
+    public IEmpInfo<Employee> EmpInfo()
+    {
+        return new EmployeeRepo(db);
+    }
 }
