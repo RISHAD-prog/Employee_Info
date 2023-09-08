@@ -66,7 +66,6 @@ namespace DAL.Repo
         /*public List<EmployeeAttendance> GetAttendance()
         {
             return db.employeeAttendances.Where(x => x.IsAbsent == 0).ToList();
-        
         }*/
 
 

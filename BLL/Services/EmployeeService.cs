@@ -63,5 +63,27 @@ namespace BLL.Services
             }
             return null;
         }
+        public List<EmployeeDTO> GetHirerarcy(int id)
+        {
+            var dataAccessFactory = new DataAccessFactory(db);
+            var data = dataAccessFactory.EmployeeCrud().Get(id);
+            var result = new List<EmployeeDTO>();
+            var config = Service.OneTimeMapping<Employee, EmployeeDTO>();
+            var mapper = new Mapper(config);
+            var d = mapper.Map<EmployeeDTO>(data);
+            result?.Add(d);
+            var Id = data;
+            if(Id != null)
+            {
+                while (data.SupervisorId != id)
+                {
+                     data = dataAccessFactory.EmpHir().GetEmployee(data);
+                     var da = mapper.Map<EmployeeDTO>(data);
+                     result?.Add(da);
+                }
+                return result;
+            }
+            return null;
+        }
     }
 }

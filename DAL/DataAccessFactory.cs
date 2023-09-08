@@ -28,4 +28,8 @@ public class DataAccessFactory
     {
         return new EmployeeRepo(db);
     }
+    public IEmpHir<Employee, Employee> EmpHir()
+    {
+        return new EmployeeRepo(db);
+    }
 }

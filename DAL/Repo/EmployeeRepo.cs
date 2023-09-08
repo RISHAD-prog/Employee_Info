@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class EmployeeRepo : IRepo<Employee, int, Employee,string>, IEmpInfo<Employee>, IEmpAttendance<Employee, int>
+    internal class EmployeeRepo : IRepo<Employee, int, Employee,string>, IEmpInfo<Employee>, IEmpAttendance<Employee, int>, IEmpHir<Employee,Employee>
     {
         private readonly EmployeeEntities db;
 
@@ -88,6 +88,11 @@ namespace DAL.Repo
         public List<Employee> Get()
         {
             return db.Employees.ToList();
+        }
+
+        public Employee GetEmployee(Employee e)
+        {
+            return db.Employees.SingleOrDefault(x => x.EmployeeId == e.SupervisorId);
         }
     }
 }

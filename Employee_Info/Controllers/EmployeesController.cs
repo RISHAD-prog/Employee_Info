@@ -62,5 +62,20 @@ namespace Employee_Info.Controllers
                 return BadRequest(e?.Message);
             }
         }
+        [HttpGet]
+        [Route("{Id}")]
+        public IActionResult GetEmpHir([FromRoute] int Id)
+        {
+            try
+            {
+                var employeeService = new EmployeeService(db);
+                var result = employeeService.GetHirerarcy(Id);
+                return Ok(result);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }
