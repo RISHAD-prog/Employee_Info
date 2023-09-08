@@ -1,6 +1,7 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
 using DAL.EF;
+using DAL.EF.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +33,21 @@ namespace Employee_Info.Controllers
             catch (Exception e)
             {
                 return BadRequest(e);
+            }
+        }
+        [HttpGet]
+
+        public IActionResult GetAtdEmployee()
+        {
+            try
+            {
+                var employeeService = new EmployeeAttendanceService(db);
+                var data = employeeService.GetAttendanceRepot();
+                return Ok(data);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
             }
         }
     }

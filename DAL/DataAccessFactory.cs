@@ -24,4 +24,8 @@ public class DataAccessFactory
     {
         return new EmployeeAttendanceRepo(db);
     }
+    public IEmpAttendance<Employee, int> GetEmployee()
+    {
+        return new EmployeeRepo(db);
+    }
 }

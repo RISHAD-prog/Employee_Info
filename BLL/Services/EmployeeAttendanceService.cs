@@ -32,5 +32,18 @@ namespace BLL.Services
             }
             return null;
         }
+
+        public List<EmployeeDTO>? GetAttendanceRepot()
+        {
+            var dataAccessFactory = new DataAccessFactory(db);
+            var AtdEmp= dataAccessFactory.GetEmployee().GetPresentEmployees();
+            if(AtdEmp != null)
+            {
+                var config = Service.Mapping<Employee, EmployeeDTO>();
+                var mapper = new Mapper(config);
+                return mapper.Map<List<EmployeeDTO>>(AtdEmp);
+            }
+            return null;
+        }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class EmployeeRepo : IRepo<Employee, int, Employee,string>, IEmpInfo<Employee>
+    internal class EmployeeRepo : IRepo<Employee, int, Employee,string>, IEmpInfo<Employee>, IEmpAttendance<Employee, int>
     {
         private readonly EmployeeEntities db;
 
@@ -69,5 +69,21 @@ namespace DAL.Repo
             }
             return null;
         }
+        public List<Employee> GetPresentEmployees()
+        {
+            var emp = db.Employees;
+            var empAtd = db.employeeAttendances;
+            // here, the condition is set a if any condition retuns false it coverts to true but If
+            // one row matches the condtion then it returns false. 
+            var employeesWithPerfectAttendance = emp
+                .Where(e => !empAtd.Where(a => e.EmployeeId == a.EmployeeId)
+                .Any(a => a.IsPresent != 1 || a.IsAbsent != 0))
+                .OrderByDescending(e => e.EmployeeSalary)
+                .ToList();
+
+            return employeesWithPerfectAttendance;
+        }
+
+        
     }
 }

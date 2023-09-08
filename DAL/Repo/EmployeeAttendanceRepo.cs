@@ -43,6 +43,14 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
+        /*public List<EmployeeAttendance> GetAttendance()
+        {
+            return db.employeeAttendances.Where(x => x.IsAbsent == 0).ToList();
+        
+        }*/
+
+        
+
         public EmployeeAttendance Update(EmployeeAttendance obj)
         {
             throw new NotImplementedException();
