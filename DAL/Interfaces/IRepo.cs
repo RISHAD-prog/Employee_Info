@@ -8,6 +8,7 @@ namespace DAL.Interfaces
 {
     public interface IRepo<CLASS, ID, RETURNTYPE, empId>
     {
+        List<CLASS> Get();
         bool Get(empId id);
         RETURNTYPE Get(ID id);
         RETURNTYPE Add(CLASS obj);

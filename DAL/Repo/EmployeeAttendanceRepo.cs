@@ -40,7 +40,27 @@ namespace DAL.Repo
 
         public EmployeeAttendance Get(int id)
         {
-            throw new NotImplementedException();
+
+            var data = db.employeeAttendances
+                .Where(x => x.EmployeeId == id)
+                .GroupBy(x => x.EmployeeId)
+                .Select(g => new EmployeeAttendance
+                {
+                    EmployeeId = g.Key,
+                    IsPresent = g.Count(x => x.IsPresent == 1),
+                    IsAbsent = g.Count(x => x.IsAbsent == 1),
+                    IsOffDay = g.Count(x => x.IsOffDay == 1),
+                    AttendanceDate = g.Select(x => x.AttendanceDate).FirstOrDefault()
+                })
+                .FirstOrDefault();
+
+            return data;
+        }
+
+
+        public List<EmployeeAttendance> Get()
+        {
+            return db.employeeAttendances.ToList();
         }
 
         /*public List<EmployeeAttendance> GetAttendance()
@@ -49,7 +69,7 @@ namespace DAL.Repo
         
         }*/
 
-        
+
 
         public EmployeeAttendance Update(EmployeeAttendance obj)
         {

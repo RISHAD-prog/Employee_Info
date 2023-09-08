@@ -73,8 +73,9 @@ namespace DAL.Repo
         {
             var emp = db.Employees;
             var empAtd = db.employeeAttendances;
-            // here, the condition is set a if any condition retuns false it coverts to true but If
-            // one row matches the condtion then it returns false. 
+            // here, the condition is set a if all condition retuns false it coverts to true but If
+            // one condition returns true then it converts to false. 
+            // Every condition has to be false first before convert.
             var employeesWithPerfectAttendance = emp
                 .Where(e => !empAtd.Where(a => e.EmployeeId == a.EmployeeId)
                 .Any(a => a.IsPresent != 1 || a.IsAbsent != 0))
@@ -84,6 +85,9 @@ namespace DAL.Repo
             return employeesWithPerfectAttendance;
         }
 
-        
+        public List<Employee> Get()
+        {
+            return db.Employees.ToList();
+        }
     }
 }
