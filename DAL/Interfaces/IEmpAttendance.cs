@@ -9,5 +9,6 @@ namespace DAL.Interfaces
     public interface IEmpAttendance<CLASS, ID>
     {
         List<CLASS> GetPresentEmployees();
+        List<CLASS> GetEmpMonthlyAttendance(string m, int id);
     }
 }

@@ -14,9 +14,13 @@ namespace DAL.EF.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int EmployeeId { get; set; }
+        [Required]
         public string? EmployeeName { get; set; }
+        [Required]
         public string? EmployeeCode { get; set; }
+        [Required]
         public int? EmployeeSalary { get; set; }
+        [Required]
         public int? SupervisorId { get; set; }
 
         public virtual List<EmployeeAttendance> EmployeeAttendances { get; set; }

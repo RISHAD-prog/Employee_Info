@@ -1,6 +1,7 @@
 ﻿using BLL.DTOs;
 using BLL.Services;
 using DAL.EF;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,13 +9,13 @@ namespace Employee_Info.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class EmployeesController : ControllerBase
     {
-        private readonly EmployeeEntities db;
-
-        public EmployeesController(EmployeeEntities _db)
+        private readonly EmployeeService edb;
+        public EmployeesController(EmployeeService edb)
         {
-            db = _db;
+            this.edb = edb;
         }
         [HttpPost]
         public IActionResult AddEmployee(EmployeeDTO employee)
@@ -23,8 +24,8 @@ namespace Employee_Info.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var employeeService = new EmployeeService(db);
-                    var data = employeeService.AddEmployee(employee);
+                    //var employeeService = new EmployeeService(db);
+                    var data = edb.AddEmployee(employee);
                     return Ok(data);
                 }
                 return NoContent();
@@ -39,8 +40,8 @@ namespace Employee_Info.Controllers
         {
             try
             {
-                var employeeService = new EmployeeService(db);
-                var result = employeeService.UpdateData(employee);
+               // var employeeService = new EmployeeService(db);
+                var result = edb.UpdateData(employee);
                 return Ok(result);
             }
             catch(Exception e)
@@ -48,13 +49,13 @@ namespace Employee_Info.Controllers
                 return BadRequest(e.Message);
             }
         }
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Admin")]
         public IActionResult Get()
         {
             try
             {
-                var employeeService = new EmployeeService(db);
-                var result = employeeService.GetData();
+                //var employeeService = new EmployeeService(db);
+                var result = edb.GetData();
                 return Ok(result);
             }
             catch(Exception e)
@@ -68,8 +69,8 @@ namespace Employee_Info.Controllers
         {
             try
             {
-                var employeeService = new EmployeeService(db);
-                var result = employeeService.GetHirerarcy(Id);
+                //var employeeService = new EmployeeService(db);
+                var result = edb.GetHirerarcy(Id);
                 return Ok(result);
             }
             catch(Exception e)

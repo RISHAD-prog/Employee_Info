@@ -13,19 +13,19 @@ namespace BLL.Services
 {
     public class EmployeeService
     {
-        private readonly EmployeeEntities db;
+        private readonly DataAccessFactory daf;
 
-        public EmployeeService(EmployeeEntities _db)
+        public EmployeeService(DataAccessFactory _daf)
         {
-            db = _db;
+            this.daf = _daf;
         }
         public EmployeeDTO AddEmployee(EmployeeDTO employee)
         {
             var config = Service.Mapping<EmployeeDTO, Employee>();
             var mapper = new Mapper(config);
             var EmployeeData = mapper.Map<Employee>(employee);
-            var dataAccessFactory = new DataAccessFactory(db);
-            var data = dataAccessFactory.EmployeeCrud().Add(EmployeeData);
+            //var dataAccessFactory = new DataAccessFactory(db);
+            var data = daf.EmployeeCrud().Add(EmployeeData);
             if(data != null)
             {
                 return mapper.Map<EmployeeDTO>(data);
@@ -34,8 +34,8 @@ namespace BLL.Services
         }
         public EmployeeDTO UpdateData(EmployeeDTO employee)
         {
-            var dataAccessFactory = new DataAccessFactory(db);
-            var isAvailable = dataAccessFactory.EmployeeCrud().Get(employee.EmployeeCode);
+            //var dataAccessFactory = new DataAccessFactory(db);
+            var isAvailable = daf.EmployeeCrud().Get(employee.EmployeeCode);
             if (isAvailable)
             {
                 return null;
@@ -45,17 +45,17 @@ namespace BLL.Services
                 var config = Service.Mapping<EmployeeDTO, Employee>();
                 var mapper = new Mapper(config);
                 var data = mapper.Map<Employee>(employee);
-                var result = dataAccessFactory.EmployeeCrud().Update(data);
+                var result = daf.EmployeeCrud().Update(data);
                 var UpdatedInfo=mapper.Map<EmployeeDTO>(result);
                 return UpdatedInfo;
             }
         }
         public int? GetData()
         {
-            var dataAccessFactory = new DataAccessFactory(db);
+            //var dataAccessFactory = new DataAccessFactory(db);
             var config = Service.OneTimeMapping<Employee, EmployeeDTO>();
             var mapper = new Mapper(config);
-            var result = dataAccessFactory.EmpInfo().EmpSalary();
+            var result = daf.EmpInfo().EmpSalary();
             if(result != null)
             {
                 var f= mapper.Map<EmployeeDTO>(result);
@@ -65,8 +65,8 @@ namespace BLL.Services
         }
         public List<EmployeeDTO> GetHirerarcy(int id)
         {
-            var dataAccessFactory = new DataAccessFactory(db);
-            var data = dataAccessFactory.EmployeeCrud().Get(id);
+            //var dataAccessFactory = new DataAccessFactory(db);
+            var data = daf.EmployeeCrud().Get(id);
             var result = new List<EmployeeDTO>();
             var config = Service.OneTimeMapping<Employee, EmployeeDTO>();
             var mapper = new Mapper(config);
@@ -77,13 +77,20 @@ namespace BLL.Services
             {
                 while (data.SupervisorId != id)
                 {
-                     data = dataAccessFactory.EmpHir().GetEmployee(data);
+                     data = daf.EmpHir().GetEmployee(data);
                      var da = mapper.Map<EmployeeDTO>(data);
                      result?.Add(da);
                 }
                 return result;
             }
             return null;
+        }
+        public List<EmployeeDTO> Get()
+        {
+            var config = Service.OneTimeMapping<Employee, EmployeeDTO>();
+            var mapper = new Mapper(config);
+            var Emp = daf.EmployeeCrud().Get();
+            return mapper.Map<List<EmployeeDTO>>(Emp);
         }
     }
 }

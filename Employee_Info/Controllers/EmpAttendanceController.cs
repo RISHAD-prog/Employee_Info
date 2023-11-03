@@ -11,11 +11,10 @@ namespace Employee_Info.Controllers
     [ApiController]
     public class EmpAttendanceController : ControllerBase
     {
-        private readonly EmployeeEntities db;
-
-        public EmpAttendanceController(EmployeeEntities _db)
+        private readonly EmployeeAttendanceService _eservice;
+        public EmpAttendanceController(EmployeeAttendanceService ndb)
         {
-            db = _db;
+            this._eservice = ndb;
         }
         [HttpPost]
         public IActionResult AddEmployee(EmployeeAttendanceDTO employee)
@@ -24,8 +23,8 @@ namespace Employee_Info.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var employeeService = new EmployeeAttendanceService(db);
-                    var data = employeeService.AddEmployeeAttendance(employee);
+                    //var employeeService = new EmployeeAttendanceService(db);
+                    var data = _eservice.AddEmployeeAttendance(employee);
                     return Ok(data);
                 }
                 return NoContent();
@@ -41,16 +40,27 @@ namespace Employee_Info.Controllers
         {
             try
             {
-                var employeeService = new EmployeeAttendanceService(db);
-                var data = employeeService.GetAttendanceRepot();
+                //var employeeService = new EmployeeAttendanceService(db);
+                var data = _eservice.GetAttendanceRepot();
                 return Ok(data);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
         }
 
+        [HttpGet("{id:int}")]
+
+        public IActionResult GetSingleEmployeeAttendanceReport([FromRoute] int id) {
+            try
+            {
+                var data = _eservice.GetSingleEmployeeAttendance(id);
+                return Ok(data);
+            }catch (Exception e) { 
+                return  BadRequest(e.Message);
+            }
+        }
         
     }
 }

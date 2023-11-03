@@ -13,19 +13,19 @@ namespace BLL.Services
 {
     public class EmployeeAttendanceService
     {
-        private readonly EmployeeEntities db;
+        private readonly DataAccessFactory daf;
 
-        public EmployeeAttendanceService(EmployeeEntities _db)
+        public EmployeeAttendanceService(DataAccessFactory _daf)
         {
-            db = _db;
+            this.daf = _daf;
         }
         public EmployeeAttendanceDTO AddEmployeeAttendance(EmployeeAttendanceDTO employeeAttendance)
         {
             var config = Service.Mapping<EmployeeAttendanceDTO, EmployeeAttendance>();
             var mapper = new Mapper(config);
             var EmployeeData = mapper.Map<EmployeeAttendance>(employeeAttendance);
-            var dataAccessFactory = new DataAccessFactory(db);
-            var data = dataAccessFactory.EmployeeAttendanceCrud().Add(EmployeeData);
+            //var dataAccessFactory = new DataAccessFactory(db);
+            var data = daf.EmployeeAttendanceCrud().Add(EmployeeData);
             if (data != null)
             {
                 return mapper.Map<EmployeeAttendanceDTO>(data);
@@ -35,13 +35,46 @@ namespace BLL.Services
 
         public List<EmployeeDTO>? GetAttendanceRepot()
         {
-            var dataAccessFactory = new DataAccessFactory(db);
-            var AtdEmp= dataAccessFactory.GetEmployee().GetPresentEmployees();
+            //var dataAccessFactory = new DataAccessFactory(db);
+            var AtdEmp= daf.GetEmployee().GetPresentEmployees();
             if(AtdEmp != null)
             {
                 var config = Service.Mapping<Employee, EmployeeDTO>();
                 var mapper = new Mapper(config);
                 return mapper.Map<List<EmployeeDTO>>(AtdEmp);
+            }
+            return null;
+        }
+
+        public List<EmpMonthlyAttendanceDTO> GetSingleEmployeeAttendance(int id)
+        {
+            var attendances = daf.singleEmpdetail().GetAttendance(id);
+            if (attendances != null)
+            {
+                var config = Service.OneTimeMapping<EmployeeAttendance, EmpMonthlyAttendanceDTO>();  
+                var mapper = new Mapper(config);
+                var result = new List<EmpMonthlyAttendanceDTO>();
+                var emp = daf.EmployeeCrud().Get(id);
+                foreach (var item in attendances)
+                {
+                    
+                    if (emp != null)
+                    {
+                        var monthlyAttendance = new EmpMonthlyAttendanceDTO
+                        {
+                            EmployeeName = emp.EmployeeName,
+                            EmployeeSalary = emp.EmployeeSalary,
+                            IsPresent = item.IsPresent,
+                            IsAbsent = item.IsAbsent,
+                            IsOffDay = item.IsOffDay,
+                            Month = item.AttendanceDate.ToString("MMMM")
+                        };
+
+                        result.Add(monthlyAttendance);
+                    }
+                }
+                
+                return mapper.Map<List<EmpMonthlyAttendanceDTO>>(result);
             }
             return null;
         }

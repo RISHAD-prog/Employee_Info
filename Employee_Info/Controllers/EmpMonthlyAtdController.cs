@@ -9,23 +9,35 @@ namespace Employee_Info.Controllers
     [ApiController]
     public class EmpMonthlyAtdController : ControllerBase
     {
-        private readonly EmployeeEntities db;
-
-        public EmpMonthlyAtdController(EmployeeEntities _db)
+        private readonly EmpMonthlyAttendanceService aserv;
+        public EmpMonthlyAtdController(EmpMonthlyAttendanceService _aserv)
         {
-            db = _db;
+            this.aserv = _aserv;
         }
-        [HttpGet]
+        /*[HttpGet]
         public IActionResult GetMonthlyAtd()
         {
             try
             {
-                var employeeService = new EmpMonthlyAttendanceService(db);
-                var data = employeeService.MonthlyAttendance();
+                //var employeeService = new EmpMonthlyAttendanceService(db);
+                var data = aserv.MonthlyAttendance();
                 return Ok(data);
             }
             catch (Exception e)
             {
+                return BadRequest(e.Message);
+            }
+        }*/
+
+        [HttpGet]
+        public IActionResult GetWeeklyAtd(String month, int id)
+        {
+            try
+            {
+                var result = aserv.empMonthlyAttendance(month, id);
+                return Ok(result);
+            }
+            catch(Exception e) { 
                 return BadRequest(e.Message);
             }
         }

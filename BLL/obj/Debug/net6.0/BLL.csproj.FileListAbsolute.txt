@@ -13,3 +13,33 @@ E:\iBos Project\BLL\obj\Debug\net6.0\BLL.dll
 E:\iBos Project\BLL\obj\Debug\net6.0\refint\BLL.dll
 E:\iBos Project\BLL\obj\Debug\net6.0\BLL.pdb
 E:\iBos Project\BLL\obj\Debug\net6.0\ref\BLL.dll
+C:\Users\ihrishad\Project\Employee_Info\BLL\bin\Debug\net6.0\BLL.deps.json
+C:\Users\ihrishad\Project\Employee_Info\BLL\bin\Debug\net6.0\BLL.dll
+C:\Users\ihrishad\Project\Employee_Info\BLL\bin\Debug\net6.0\BLL.pdb
+C:\Users\ihrishad\Project\Employee_Info\BLL\bin\Debug\net6.0\DAL.dll
+C:\Users\ihrishad\Project\Employee_Info\BLL\bin\Debug\net6.0\DAL.pdb
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.csproj.AssemblyReference.cache
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.AssemblyInfoInputs.cache
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.AssemblyInfo.cs
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.csproj.CoreCompileInputs.cache
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.csproj.CopyComplete
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.dll
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\refint\BLL.dll
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.pdb
+C:\Users\ihrishad\Project\Employee_Info\BLL\obj\Debug\net6.0\ref\BLL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\bin\Debug\net6.0\BLL.deps.json
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\bin\Debug\net6.0\BLL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\bin\Debug\net6.0\BLL.pdb
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\bin\Debug\net6.0\DAL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\bin\Debug\net6.0\DAL.pdb
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.csproj.AssemblyReference.cache
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.AssemblyInfoInputs.cache
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.AssemblyInfo.cs
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.csproj.CoreCompileInputs.cache
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.csproj.CopyComplete
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\refint\BLL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\BLL.pdb
+C:\Users\ihrishad\Practice Project\Employee_Info\BLL\obj\Debug\net6.0\ref\BLL.dll

@@ -28,15 +28,19 @@ namespace DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("EmployeeCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmployeeName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("EmployeeSalary")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("SupervisorId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("EmployeeId");
@@ -72,6 +76,31 @@ namespace DAL.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("employeeAttendances");
+                });
+
+            modelBuilder.Entity("DAL.EF.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("DAL.EF.Models.EmployeeAttendance", b =>

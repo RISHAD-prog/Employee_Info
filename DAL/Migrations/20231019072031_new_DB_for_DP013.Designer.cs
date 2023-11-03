@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DAL.Migrations
 {
     [DbContext(typeof(EmployeeEntities))]
-    [Migration("20230907173512_EmployeeInformation")]
-    partial class EmployeeInformation
+    [Migration("20231019072031_new_DB_for_DP013")]
+    partial class new_DB_for_DP013
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -10,3 +10,27 @@ E:\iBos Project\DAL\obj\Debug\net6.0\DAL.dll
 E:\iBos Project\DAL\obj\Debug\net6.0\refint\DAL.dll
 E:\iBos Project\DAL\obj\Debug\net6.0\DAL.pdb
 E:\iBos Project\DAL\obj\Debug\net6.0\ref\DAL.dll
+C:\Users\ihrishad\Project\Employee_Info\DAL\bin\Debug\net6.0\DAL.deps.json
+C:\Users\ihrishad\Project\Employee_Info\DAL\bin\Debug\net6.0\DAL.dll
+C:\Users\ihrishad\Project\Employee_Info\DAL\bin\Debug\net6.0\DAL.pdb
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.dll
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\refint\DAL.dll
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.pdb
+C:\Users\ihrishad\Project\Employee_Info\DAL\obj\Debug\net6.0\ref\DAL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\bin\Debug\net6.0\DAL.deps.json
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\bin\Debug\net6.0\DAL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\bin\Debug\net6.0\DAL.pdb
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.csproj.AssemblyReference.cache
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.AssemblyInfoInputs.cache
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.AssemblyInfo.cs
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\refint\DAL.dll
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\DAL.pdb
+C:\Users\ihrishad\Practice Project\Employee_Info\DAL\obj\Debug\net6.0\ref\DAL.dll

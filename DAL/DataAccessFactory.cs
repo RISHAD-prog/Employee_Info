@@ -24,12 +24,24 @@ public class DataAccessFactory
     {
         return new EmployeeAttendanceRepo(db);
     }
+    public ISingleEmpdetail<EmployeeAttendance> singleEmpdetail()
+    {
+        return new EmployeeAttendanceRepo(db);
+    }
     public IEmpAttendance<Employee, int> GetEmployee()
     {
         return new EmployeeRepo(db);
     }
+    public IEmpAttendance<EmployeeAttendance, int> GetEmployeeAttendance()
+    {
+        return new EmployeeAttendanceRepo(db);
+    }
     public IEmpHir<Employee, Employee> EmpHir()
     {
         return new EmployeeRepo(db);
+    }
+    public IUser<User, string> User()
+    {
+        return new UserRepo(db);
     }
 }

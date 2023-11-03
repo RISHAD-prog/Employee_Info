@@ -94,5 +94,10 @@ namespace DAL.Repo
         {
             return db.Employees.SingleOrDefault(x => x.EmployeeId == e.SupervisorId);
         }
+
+        public List<Employee> GetEmpMonthlyAttendance(string m, int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

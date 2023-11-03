@@ -3,13 +3,14 @@ using DAL.EF.Models;
 using DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Repo
 {
-    internal class EmployeeAttendanceRepo : IRepo<EmployeeAttendance, int, EmployeeAttendance, string>
+    internal class EmployeeAttendanceRepo : IRepo<EmployeeAttendance, int, EmployeeAttendance, string>, ISingleEmpdetail<EmployeeAttendance>, IEmpAttendance<EmployeeAttendance, int>
     {
         private readonly EmployeeEntities db;
 
@@ -61,6 +62,31 @@ namespace DAL.Repo
         public List<EmployeeAttendance> Get()
         {
             return db.employeeAttendances.ToList();
+        }
+
+        public List<EmployeeAttendance> GetAttendance(int empid)
+        {
+            var data = db.employeeAttendances.Where(e=> e.EmployeeId == empid).ToList();
+            return data;
+            
+        }
+
+        public List<EmployeeAttendance> GetEmpMonthlyAttendance(string m, int id)
+        {
+            int month = DateTime.ParseExact(m, "MMMM", CultureInfo.CurrentCulture).Month;
+
+
+            var match = db.employeeAttendances.Where(e=>
+            (e.AttendanceDate.Month == month) && 
+            (e.EmployeeId.Equals(id)))     
+            .OrderBy(x=> x.AttendanceDate)
+            .ToList();
+            return match;
+        }
+
+        public List<EmployeeAttendance> GetPresentEmployees()
+        {
+            throw new NotImplementedException();
         }
 
         /*public List<EmployeeAttendance> GetAttendance()
