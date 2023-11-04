@@ -17,7 +17,7 @@ namespace Employee_Info.Controllers
             this._eservice = ndb;
         }
         [HttpPost]
-        public IActionResult AddEmployee(EmployeeAttendanceDTO employee)
+        public async  Task<IActionResult> AddEmployee(EmployeeAttendanceDTO employee)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace Employee_Info.Controllers
         }
         [HttpGet]
 
-        public IActionResult GetAtdEmployee()
+        public async Task<IActionResult> GetAtdEmployee()
         {
             try
             {

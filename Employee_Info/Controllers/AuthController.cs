@@ -38,7 +38,7 @@ namespace Employee_Info.Controllers
         public async Task<IActionResult> Login(UserDto user)
         {
             var registerDetails = _eservice.getDetails(user);
-            var verify =  VerifyPassword(user.Password!, registerDetails.PasswordHash!, registerDetails.PasswordSalt!);
+            var verify = VerifyPassword(user.Password!, registerDetails.PasswordHash!, registerDetails.PasswordSalt!);
             
             if(registerDetails.UserName == user.UserName && verify)
             {
