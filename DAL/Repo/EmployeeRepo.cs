@@ -1,6 +1,7 @@
 ﻿using DAL.EF;
 using DAL.EF.Models;
 using DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,14 @@ namespace DAL.Repo
         {
             db = _db;
         }
-        public  Employee Add(Employee obj)
+        public async Task<Employee> Add(Employee obj)
         {
-            db.Employees.Add(obj);
+            await db.Employees.AddAsync(obj);
             if (db.SaveChanges() > 0)
             {
-                return obj;
+                return (obj);
             }
-            return null;
+            return null!;
         }
 
         public bool Delete(int id)
@@ -32,20 +33,20 @@ namespace DAL.Repo
             throw new NotImplementedException();
         }
 
-        public Employee EmpSalary()
+        public async Task<Employee> EmpSalary()
         {
-            var thirdHighest= db.Employees.OrderByDescending(x=> x.EmployeeSalary).
-                Skip(2).Take(1).FirstOrDefault();
+            var thirdHighest= await db.Employees.OrderByDescending(x=> x.EmployeeSalary).
+                Skip(2).Take(1).FirstOrDefaultAsync();
             if(thirdHighest != null)
             {
                 return thirdHighest;
             }
-            return null;
+            return null!;
         }
 
-        public bool Get(string EmpCode)
+        public async Task<bool> Get(string EmpCode)
         {
-            var d = db.Employees.SingleOrDefault(x => x.EmployeeCode.Equals(EmpCode));
+            var d = await db.Employees.SingleOrDefaultAsync(x => x.EmployeeCode.Equals(EmpCode));
             if(d == null)
             {
                 return false;
@@ -55,19 +56,20 @@ namespace DAL.Repo
 
         public Employee Get(int id)
         {
-            return db.Employees.SingleOrDefault(x => x.EmployeeId.Equals(id));
+            var res= db.Employees.SingleOrDefault(x => x.EmployeeId.Equals(id));
+            return res!;
         }
 
-        public  Employee Update(Employee obj)
+        public async Task<Employee> Update(Employee obj)
         {
             var data = Get(obj.EmployeeId);
             db.Entry(data).CurrentValues.SetValues(obj);
-            var d = db.SaveChanges();
+            var d =await db.SaveChangesAsync();
             if(d > 0)
             {
                 return data;
             }
-            return null;
+            return null!;
         }
         public List<Employee> GetPresentEmployees()
         {
@@ -92,7 +94,7 @@ namespace DAL.Repo
 
         public Employee GetEmployee(Employee e)
         {
-            return db.Employees.SingleOrDefault(x => x.EmployeeId == e.SupervisorId);
+            return db.Employees.SingleOrDefault(x => x.EmployeeId == e.SupervisorId)!;
         }
 
         public List<Employee> GetEmpMonthlyAttendance(string m, int id)
