@@ -26,7 +26,7 @@ namespace DAL.Repo
             {
                 return obj;
             }
-            return null;
+            return null!;
         }
 
         public bool Delete(int id)
@@ -55,7 +55,7 @@ namespace DAL.Repo
                 })
                 .FirstOrDefault();
 
-            return data;
+            return data!;
         }
 
 
